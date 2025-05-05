@@ -16,10 +16,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @EnableDiscoveryClient
 @SpringBootApplication
-public class BznExemploServicesApplication {
+public class BznExemploServicesRolesApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BznExemploServicesApplication.class, args);
+		SpringApplication.run(br.brazona.bzn_exemplo_services_roles_roles.BznExemploServicesRolesApplication.class, args);
 	}
 
 }

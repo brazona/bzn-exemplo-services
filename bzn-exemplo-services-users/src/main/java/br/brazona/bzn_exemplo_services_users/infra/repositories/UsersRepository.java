@@ -1,4 +1,4 @@
-package br.brazona.bzn_exemplo_services_users_users.infra.repositories;
+package br.brazona.bzn_exemplo_services_users.infra.repositories;
 
 import br.brazona.bzn_exemplo_services_users.domain.entities.UsersEntity;
 import org.springframework.data.repository.CrudRepository;

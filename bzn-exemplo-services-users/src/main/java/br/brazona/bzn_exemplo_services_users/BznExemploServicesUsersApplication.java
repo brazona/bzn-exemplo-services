@@ -1,4 +1,4 @@
-package br.brazona.bzn_exemplo_services_users_users;
+package br.brazona.bzn_exemplo_services_users;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -10,9 +10,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EnableAutoConfiguration
-@EntityScan(basePackages = { "br.brazona.bzn_exemplo_services_users_users.domain.entities" })
-@ComponentScan( basePackages = {"br.brazona.bzn_exemplo_services_users_users.*"})
-@EnableJpaRepositories(basePackages = {"br.brazona.bzn_exemplo_services_users_users.infra.repositories"})
+@EntityScan(basePackages = { "br.brazona.bzn_exemplo_services_users.domain.entities" })
+@ComponentScan( basePackages = {"br.brazona.bzn_exemplo_services_users.*"})
+@EnableJpaRepositories(basePackages = {"br.brazona.bzn_exemplo_services_users.infra.repositories"})
 @EnableTransactionManagement
 @EnableDiscoveryClient
 @SpringBootApplication
