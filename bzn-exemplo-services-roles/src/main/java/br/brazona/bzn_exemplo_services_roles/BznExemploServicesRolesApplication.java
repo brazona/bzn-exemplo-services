@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @EnableAutoConfiguration
-@EntityScan(basePackages = { "br.brazona.bzn_exemplo_services_roles.domain.entities" })
+@EntityScan(basePackages = { "br.brazona.bzn_exemplo_services_roles.infra.entities" })
 @ComponentScan( basePackages = {"br.brazona.bzn_exemplo_services_roles.*"})
 @EnableJpaRepositories(basePackages = {"br.brazona.bzn_exemplo_services_roles.infra.repositories"})
 @EnableTransactionManagement
