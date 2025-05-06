@@ -1,4 +1,4 @@
-package br.brazona.bzn_exemplo_services_roles_roles;
+package br.brazona.bzn_exemplo_services_roles;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -16,10 +16,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @EnableDiscoveryClient
 @SpringBootApplication
-public class BznExemploServicesRolesApplication {
+public class  BznExemploServicesRolesApplication{
 
 	public static void main(String[] args) {
-		SpringApplication.run(br.brazona.bzn_exemplo_services_roles_roles.BznExemploServicesRolesApplication.class, args);
+		SpringApplication.run(BznExemploServicesRolesApplication.class, args);
 	}
 
 }

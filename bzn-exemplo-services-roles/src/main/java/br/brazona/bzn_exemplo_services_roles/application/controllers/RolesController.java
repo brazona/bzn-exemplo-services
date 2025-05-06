@@ -9,22 +9,33 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/roles/v1")
-public interface RolesController {
+public class RolesController {
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    ResponseEntity<RolesModel> getById(@PathVariable(value = "id") Long id);
+    public ResponseEntity<RolesModel> getById(@PathVariable(value = "id") Long id){
+        return null;
+    };
 
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
-    ResponseEntity<List<RolesModel>> getAll();
+    public ResponseEntity<List<RolesModel>> getAll(){
+        return null;
+    };
 
     @PostMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE
             , consumes = MediaType.APPLICATION_JSON_VALUE)
-    ResponseEntity<RolesModel> create(@RequestBody RolesModel rolesModel);
+    public ResponseEntity<RolesModel> create(@RequestBody RolesModel rolesModel){
+        return null;
+    };
 
     @PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE
             , consumes = MediaType.APPLICATION_JSON_VALUE)
-    ResponseEntity<RolesModel> update(@PathVariable(value = "id") Long id, @RequestBody RolesModel rolesModel);
+    public ResponseEntity<RolesModel> update(@PathVariable(value = "id") Long id,
+                                             @RequestBody RolesModel rolesModel){
+        return null;
+    };
 
     @DeleteMapping(value = "/{id}")
-    void delete(@PathVariable(value = "id") Long id);
+    public void delete(@PathVariable(value = "id") Long id){
+
+    };
 }
