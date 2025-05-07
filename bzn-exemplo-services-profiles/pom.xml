@@ -89,7 +89,30 @@
 					</excludes>
 				</configuration>
 			</plugin>
+			
+			<plugin>
+			    <groupId>org.openapitools</groupId>
+			    <artifactId>openapi-generator-maven-plugin</artifactId>
+			    <version>6.2.1</version>
+			    <executions>
+			        <execution>
+			            <goals>
+			                <goal>generate</goal>
+			            </goals>
+			            <configuration>
+			                <skipValidateSpec>true</skipValidateSpec>
+			                <inputSpec>./src/main/resources/openapi.yaml</inputSpec>
+			                <generatorName>spring</generatorName>
+			                <configOptions>
+			                    <openApiNullable>false</openApiNullable>
+			                    <interfaceOnly>true</interfaceOnly>
+			                </configOptions>
+			            </configuration>
+			        </execution>
+			    </executions>
+			</plugin>
 		</plugins>
+		
 	</build>
 
 </project>
