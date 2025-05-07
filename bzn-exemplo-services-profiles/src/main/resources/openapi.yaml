@@ -9,7 +9,9 @@ info:
   termsOfService: https://swagger.io/terms/
   contact:
     email: apiteam@swagger.io
-  version: 1.0.12  
+  version: 1.0.12
+servers:
+  - url: http://localhost:8484/bzn-exemplo-services-profiles/v1
 tags:
   - name: Perfil
     description: API que fornece funcionalidades dos perfils de usuários do sistema.
