@@ -6,6 +6,13 @@ import org.springframework.stereotype.Component;
 import java.io.Serial;
 import java.io.Serializable;
 
+/**
+ * Classe que representa a entidade Usuário.
+ * @author Brazona Tech
+ * @version 1.0.0
+ * @since release 1.0.0
+ */
+
 @Entity
 @Table(name = "users")
 public class UserEntity implements Serializable {

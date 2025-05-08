@@ -21,6 +21,7 @@ import br.brazona.bzn_exemplo_services_users.domain.model.UserModel;
 import br.brazona.bzn_exemplo_services_users.domain.services.UsersService;
 import org.springframework.web.bind.annotation.RequestBody;
 
+/** Classe que implementa IUsersController. */
 
 @RestController
 @RequestMapping(value = "/user/v1")
@@ -32,6 +33,7 @@ public class UsersControllerImpl implements IUsersController{
 	@Autowired
 	private UsersService usersService;
 	
+	/** { @inheritDoc } */
 	@Override
 	@PostMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE
     , consumes = MediaType.APPLICATION_JSON_VALUE)
@@ -41,14 +43,14 @@ public class UsersControllerImpl implements IUsersController{
 		logger.info("A INFO body {}: ", userModel);
 		return ResponseEntity.ok(usersService.create(userModel));
 	}
-
+	/** { @inheritDoc } */
 	@Override
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<UserModel> readById(@PathVariable Long  id) {
 		// TODO Auto-generated method stub
 		return ResponseEntity.ok(usersService.readById(id));
 	}
-
+	/** { @inheritDoc } */
 	@Override
 	@PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<UserModel> update(@PathVariable Long id, @RequestBody UserModel userModel) {
@@ -56,7 +58,7 @@ public class UsersControllerImpl implements IUsersController{
 		
 		return ResponseEntity.ok(usersService.update(id, userModel));
 	}
-
+	/** { @inheritDoc } */
 	@Override
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable Long id) {
@@ -64,7 +66,7 @@ public class UsersControllerImpl implements IUsersController{
 		usersService.delete(id);
 		return null;
 	}
-
+	/** { @inheritDoc } */
 	@Override
 	@GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<UserModel>> readAll() {

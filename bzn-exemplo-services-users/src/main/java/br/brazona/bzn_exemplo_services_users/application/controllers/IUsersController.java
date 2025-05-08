@@ -16,12 +16,26 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
+/**Classe para expor endpoint rest da funcionalidade Usuário.
+* @author Brazona Tech
+* @version 1.0.0
+* @since release 1.0.0
+*/
+
 
 @Tag(name = "usuario", description = "Serviço que disponibiliza funcionalidade Usuário", 
 externalDocs = @ExternalDocumentation(
 		description = "Documentação da Exemplo Users",
 		url = "https://github.com/brazona/bzn-exemplo-services/tree/main/bzn-exemplo-services-users"))
 public interface IUsersController {
+
+
+	 /**Método para criar um usuário no sistema.
+	 * @param userModel - Objeto que contém as informações do usuário a ser criado no sistema.
+	 * @return ResponseEntity<UserModel> - Retorna o usuário criado no sistema.
+	 * @throws Exception - Lança exceção caso ocorra erro ao criar o usuário.
+	 */
+
 
 	@Operation(
 		summary = "Cria usuário no sistema",
@@ -58,6 +72,11 @@ public interface IUsersController {
 	)
 	public ResponseEntity<UserModel>create(UserModel userModel);
 
+	/**Método para consultar um usuário no sistema.
+	 * @param id - Identificador do usuário a ser consultado.
+	 * @return ResponseEntity<UserModel> - Retorna o usuário consultado no sistema.
+	 * @throws Exception - Lança exceção caso ocorra erro ao consultar o usuário.
+	 */
 	@Operation(
 			summary = "Consulta usuário pelo identificador",
 			description = "Através do identificador consulta as informações do usuário cadastradas no sistema.", 
@@ -94,6 +113,13 @@ public interface IUsersController {
 	)
 	public ResponseEntity<UserModel>readById(Long id);
 	
+	/**Método para atualizar um usuário no sistema.
+	 * @param id - Identificador do usuário a ser atualizado.
+	 * @param userModel - Objeto que contém as novas informações do usuário a ser atualizado no sistema.
+	 * @return ResponseEntity<UserModel> - Retorna o usuário atualizado no sistema.
+	 * @throws Exception - Lança exceção caso ocorra erro ao atualizar o usuário.
+	 */
+
 	@Operation(
 			summary = "Atualiza usuário pelo identificador ",
 			description = "Através do identificador e das novas informações atualiza as informações do usuário cadastradas no sistema.", 
@@ -143,6 +169,11 @@ public interface IUsersController {
 	
 	public ResponseEntity<UserModel>update(Long id, UserModel userModel);
 	
+	/**Método para deletar um usuário no sistema.
+	 * @param id - Identificador do usuário a ser deletado.
+	 * @return ResponseEntity<Void> - Retorna vazio caso o usuário seja deletado com sucesso.
+	 * @throws Exception - Lança exceção caso ocorra erro ao deletar o usuário.
+	 */
 	@Operation(
 			summary = "Deleta usuário pelo identificador",
 			description = "Através do identificador deleta as informações do usuário cadastradas no sistema.", 
@@ -178,6 +209,10 @@ public interface IUsersController {
 
 	public ResponseEntity<Void>delete(Long id);
 	
+	/**Método para consultar todos os usuários no sistema.
+	 * @return ResponseEntity<List<UserModel>> - Retorna a lista de usuários cadastrados no sistema.
+	 * @throws Exception - Lança exceção caso ocorra erro ao consultar os usuários.
+	 */
 	@Operation(
 			summary = "Consulta todos os usuário",
 			description = "Consulta todos os usuários cadastradas no sistema.", 

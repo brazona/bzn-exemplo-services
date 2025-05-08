@@ -1,10 +1,8 @@
 
 /**
- * This module is about impact of the final keyword on performance
+ * Camada de InfraEstrutura - Arquitetura DDD (Domain-Driven Design)
  * <p>
- * This module explores  if there are any performance benefits from
- * using the final keyword in our code. This module examines the performance
- * implications of using final on a variable, method, and class level.
+ * Nessa camada estão todas as classes relacionadas a configurações e acesso ao banco de dados.
  * </p>
  *
  * @since 1.0

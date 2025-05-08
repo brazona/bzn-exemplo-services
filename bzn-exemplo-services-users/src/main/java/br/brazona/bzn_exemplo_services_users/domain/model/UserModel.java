@@ -6,6 +6,12 @@ import org.springframework.stereotype.Component;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
+/**Classe modelo Usuário.
+* @author Brazona Tech
+* @version 1.0.0
+* @since release 1.0.0
+*/
+
 @Component
 @ApiModel(description = "Modelo objeto Usuário")
 public class UserModel {
