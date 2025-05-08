@@ -29,6 +29,34 @@ public class UsersService {
     			usersRepository.save(userDto.toEntity(usersModel))
     			);
     }
+    public UserModel readById (Long id){
+        Optional<UserEntity> usersEntityOptional = usersRepository.findById(id);
+        if (usersEntityOptional.isEmpty())
+            throw new RuntimeException("Not found");
+        UserEntity usersEntity = usersEntityOptional.get();        
+        return userDto.toModel(usersEntity);
+    }
+    
+    public UserModel update(Long id, UserModel usersModel) {
+    	readById(id);
+    	usersModel.setId(id);
+    	return userDto.toModel(
+    			usersRepository.save(userDto.toEntity(usersModel))
+    			);
+    }
+    public void delete (Long id){
+    	readById(id);
+    	usersRepository.deleteById(id);
+    }
+    public List<UserModel>readAll(){
+    	List<UserModel> lista = new ArrayList<>();
+    	Iterable<UserEntity> iterable = usersRepository.findAll();
+    	iterable.forEach(entity ->{
+    		lista.add(userDto.toModel(entity));
+    	});
+    	return lista;
+    }
+    
     public UserModel getByIdCopy (Long id){
         Optional<UserEntity> usersEntityOptional = usersRepository.findById(id);
         if (usersEntityOptional.isEmpty())

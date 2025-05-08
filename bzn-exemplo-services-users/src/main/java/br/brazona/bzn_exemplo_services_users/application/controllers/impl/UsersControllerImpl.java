@@ -7,7 +7,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -39,27 +43,33 @@ public class UsersControllerImpl implements IUsersController{
 	}
 
 	@Override
-	public ResponseEntity<UserModel> readById() {
+	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<UserModel> readById(@PathVariable Long  id) {
 		// TODO Auto-generated method stub
+		return ResponseEntity.ok(usersService.readById(id));
+	}
+
+	@Override
+	@PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<UserModel> update(@PathVariable Long id, @RequestBody UserModel userModel) {
+		// TODO Auto-generated method stub
+		
+		return ResponseEntity.ok(usersService.update(id, userModel));
+	}
+
+	@Override
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<Void> delete(@PathVariable Long id) {
+		// TODO Auto-generated method stub
+		usersService.delete(id);
 		return null;
 	}
 
 	@Override
-	public ResponseEntity<UserModel> update() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ResponseEntity<Void> delete() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
+	@GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<UserModel>> readAll() {
 		// TODO Auto-generated method stub
-		return null;
+		return ResponseEntity.ok(usersService.readAll());
 	}
 
 }
