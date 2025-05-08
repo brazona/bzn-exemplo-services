@@ -168,7 +168,7 @@ components:
           example: 198772
         roleId:
           type: integer
-          format: int32
+          format: int64
           description: Identificador do papel.
           example: 7
         name:

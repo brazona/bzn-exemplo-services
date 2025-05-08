@@ -1,7 +1,8 @@
 package br.brazona.bzn_exemplo_services_users.domain.services;
 
-import br.brazona.bzn_exemplo_services_users.domain.entities.UsersEntity;
+import br.brazona.bzn_exemplo_services_users.domain.dto.UserDto;
 import br.brazona.bzn_exemplo_services_users.domain.model.UserModel;
+import br.brazona.bzn_exemplo_services_users.infra.entities.UserEntity;
 import br.brazona.bzn_exemplo_services_users.infra.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,27 +19,37 @@ public class UsersService {
 
     @Autowired
     private UserModel userModel;
+    
+    @Autowired
+    private UserDto userDto;
 
+    public UserModel create(UserModel usersModel) {
+//    	UserEntity userSaved = usersRepository.save(userDto.toEntity(usersModel));
+    	return userDto.toModel(
+    			usersRepository.save(userDto.toEntity(usersModel))
+    			);
+    }
     public UserModel getByIdCopy (Long id){
-        Optional<UsersEntity> usersEntityOptional = usersRepository.findById(id);
+        Optional<UserEntity> usersEntityOptional = usersRepository.findById(id);
         if (usersEntityOptional.isEmpty())
             throw new RuntimeException("Not found");
-        UsersEntity usersEntity = usersEntityOptional.get();
+        UserEntity usersEntity = usersEntityOptional.get();
 //       return new UserModel(usersEntity.getId(), usersEntity.getEmail());
         userModel.setId(usersEntity.getId());
         userModel.setEmail(usersEntity.getEmail());
         return userModel;
     }
-    public UsersEntity getById (Long id){
-        Optional<UsersEntity> usersEntityOptional = usersRepository.findById(id);
+    public UserEntity getById (Long id){
+        Optional<UserEntity> usersEntityOptional = usersRepository.findById(id);
         if (usersEntityOptional.isEmpty())
             throw new RuntimeException("Not found");
         return usersEntityOptional.get();
     }
-    public List<UsersEntity> getAll(){
-        List<UsersEntity> list = new ArrayList<>();
-        Iterable<UsersEntity> usersEntityIterable = usersRepository.findAll();
+    public List<UserEntity> getAll(){
+        List<UserEntity> list = new ArrayList<>();
+        Iterable<UserEntity> usersEntityIterable = usersRepository.findAll();
         usersEntityIterable.forEach(list::add);
         return list;
     }
+    
 }

@@ -1,3 +1,1 @@
-INSERT INTO roles (id, name) VALUES (1,'ROLE_ADMIN');   
-INSERT INTO roles (id, name) VALUES (2,'ROLE_USER');
-INSERT INTO roles (id, name) VALUES (3,'ROLE_GUEST');
+INSERT INTO profiles (id, name, user_id, role_id) VALUES (1,'COORDENADOR', 1, 1);

@@ -12,6 +12,7 @@ public class UserModel {
     public UserModel() {
     }
 
+    
     public UserModel(Long id, String email) {
         this.id = id;
         this.email = email;

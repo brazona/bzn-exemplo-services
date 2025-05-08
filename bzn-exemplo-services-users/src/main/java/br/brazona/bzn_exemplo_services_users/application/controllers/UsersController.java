@@ -1,8 +1,9 @@
 package br.brazona.bzn_exemplo_services_users.application.controllers;
 
-import br.brazona.bzn_exemplo_services_users.domain.entities.UsersEntity;
 import br.brazona.bzn_exemplo_services_users.domain.model.UserModel;
 import br.brazona.bzn_exemplo_services_users.domain.services.UsersService;
+import br.brazona.bzn_exemplo_services_users.infra.entities.UserEntity;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class UsersController {
     private UsersService usersService;
 
     @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<UsersEntity>get(@PathVariable(value = "id") Long id){
+    public ResponseEntity<UserEntity>get(@PathVariable(value = "id") Long id){
         return ResponseEntity.ok(usersService.getById(id));
     }
     @GetMapping(value = "/{id}/copy", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -28,7 +29,7 @@ public class UsersController {
         return ResponseEntity.ok(usersService.getByIdCopy(id));
     }
     @GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<List<UsersEntity>>getAll(){
+    public ResponseEntity<List<UserEntity>>getAll(){
         return ResponseEntity.ok(usersService.getAll());
     }
 }
