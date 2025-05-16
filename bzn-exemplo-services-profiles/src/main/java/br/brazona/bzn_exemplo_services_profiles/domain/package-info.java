@@ -10,4 +10,4 @@
  * @version 1.1
  */
 
-package br.brazona.bzn_exemplo_services_users.domain;
+package br.brazona.bzn_exemplo_services_profiles.domain;

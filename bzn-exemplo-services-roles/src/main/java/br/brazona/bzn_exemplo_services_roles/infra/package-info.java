@@ -10,4 +10,4 @@
  * @version 1.1
  */
 
-package br.brazona.bzn_exemplo_services_users.infra;
+package br.brazona.bzn_exemplo_services_roles.infra;
