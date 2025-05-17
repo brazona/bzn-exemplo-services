@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILE_COMPOSE=compose.yaml
+FILE_COMPOSE=compose.yml
 FILE_COMPOSE_RUN=compose-run.yml
 FILE_ENV=.env
 
