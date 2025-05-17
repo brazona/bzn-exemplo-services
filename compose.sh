@@ -19,7 +19,7 @@ for arg in "$@"; do
 done
 
 # Executa maven clean install
-mvn clean install -P compose
+mvn clean install
 
 num=1
 for arg in "$@"; do
