@@ -26,11 +26,11 @@ ENV EUREKA_SERVER_HOST=$ARG_EUREKA_SERVER_HOST
 WORKDIR /app
 # Copia certificado publico do servidor
 COPY $APP_SERVER_CERTIFICATE /app
+COPY ./target/*.jar /app
 # importa o certificado do servidor para o keystore padrão do Java
 RUN keytool -importcert -file $APP_SERVER_CERTIFICATE -alias $APP_SERVER_CERTIFICATE -cacerts -storepass changeit -noprompt
 # Copia o jar compilado da etapa anterior
-#COPY /app/${JAR_FILE} app.jar
-COPY ${JAR_FILE} app.jar
+COPY /app/*.jar app.jar
 
 # Define o comando padrão para rodar a aplicação
 CMD ["java", "-jar", "app.jar"]
