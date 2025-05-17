@@ -29,7 +29,8 @@ COPY $APP_SERVER_CERTIFICATE /app
 # importa o certificado do servidor para o keystore padrão do Java
 RUN keytool -importcert -file $APP_SERVER_CERTIFICATE -alias $APP_SERVER_CERTIFICATE -cacerts -storepass changeit -noprompt
 # Copia o jar compilado da etapa anterior
-COPY /app/${JAR_FILE} app.jar
+#COPY /app/${JAR_FILE} app.jar
+COPY ${JAR_FILE} app.jar
 
 # Define o comando padrão para rodar a aplicação
 CMD ["java", "-jar", "app.jar"]
