@@ -1,7 +1,7 @@
 #!/bin/bash
 
 FILE_COMPOSE=compose.yaml
-FILE_COMPOSE_RUN=compose-run.yaml
+FILE_COMPOSE_RUN=compose-run.yml
 FILE_ENV=.env
 
 ## Verifica os paramentros
