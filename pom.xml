@@ -60,7 +60,7 @@
 	
 	</dependencies>
 	<modules>
-		<module>bzn-exemplo-services-users</module>
+		<!-- <module>bzn-exemplo-services-users</module> -->
 		<module>bzn-exemplo-services-roles</module>
 		<module>bzn-exemplo-services-profiles</module>
 	</modules>
