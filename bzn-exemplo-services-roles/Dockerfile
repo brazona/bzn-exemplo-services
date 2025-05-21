@@ -1,20 +1,16 @@
-FROM openjdk:24-slim
+# Etapa 1: Compilar a aplicação
+FROM maven:3.9.9-sapmachine-24 AS build
 
 LABEL maintainer=Brazona\ Cézar
 VOLUME /tmp
 
-ARG ARG_SPRING_ACTIVE_PROFILE=compose
+ARG ARG_SPRING_ACTIVE_PROFILE
 ARG ARG_APPLICATION_NAME
 ARG ARG_CONFIG_SERVER_PASS
 ARG ARG_CONFIG_SERVER_USER
 ARG ARG_CONFIG_SERVER_HOST
 ARG ARG_EUREKA_SERVER_HOST
-ARG ARG_APP_SERVER_CERTIFICATE=bzn-sbc-client-compose.crt   
-ARG ARG_APP_SERVER_CERTIFICATE_ALIAS=bzn-sbc-server-compose
-ARG JAR_FILE=target/*.jar
 
-ENV APP_SERVER_CERTIFICATE=$ARG_APP_SERVER_CERTIFICATE
-ENV APP_SERVER_CERTIFICATE_ALIAS=$ARG_APP_SERVER_CERTIFICATE_ALIAS
 ENV SPRING_ACTIVE_PROFILE=$ARG_SPRING_ACTIVE_PROFILE
 ENV APPLICATION_NAME=$ARG_APPLICATION_NAME
 ENV CONFIG_SERVER_PASS=$ARG_CONFIG_SERVER_PASS
@@ -24,13 +20,25 @@ ENV EUREKA_SERVER_HOST=$ARG_EUREKA_SERVER_HOST
 
 # Define o diretório de trabalho dentro do contêiner
 WORKDIR /app
-# Copia certificado publico do servidor
-COPY $APP_SERVER_CERTIFICATE /app
-# importa o certificado do servidor para o keystore padrão do Java
-RUN keytool -importcert -file $APP_SERVER_CERTIFICATE -alias $APP_SERVER_CERTIFICATE -cacerts -storepass changeit -noprompt
+# Copia o arquivo pom.xml e os arquivos de dependências para o diretório de trabalho
+COPY pom.xml ./
+COPY src ./src
+
+# Compila a aplicação
+RUN mvn clean install
+
+# Etapa 2: Criar a imagem final para execução
+FROM openjdk:24-slim
+
+# Define o diretório de trabalho dentro do contêiner
+WORKDIR /app
+
+# Cria um argumento para o nome da aplicação
+ARG JAR_FILE=target/*.jar
+
 # Copia o jar compilado da etapa anterior
-#COPY /app/${JAR_FILE} app.jar
-COPY ${JAR_FILE} app.jar
+COPY --from=build /app/${JAR_FILE} app.jar
 
 # Define o comando padrão para rodar a aplicação
 CMD ["java", "-jar", "app.jar"]
+
