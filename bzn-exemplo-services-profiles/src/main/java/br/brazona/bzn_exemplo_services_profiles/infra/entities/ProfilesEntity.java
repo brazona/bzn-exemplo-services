@@ -31,6 +31,14 @@ public class ProfilesEntity implements Serializable {
     @Column(name = "role_id", nullable = true, length = 12)
     private Long roleId;
 
+	public ProfilesEntity(Long id, @NotBlank String name, @NotBlank Long userId, @NotBlank Long roleId) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.userId = userId;
+		this.roleId = roleId;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -62,8 +70,11 @@ public class ProfilesEntity implements Serializable {
 	public void setRoleId(Long roleId) {
 		this.roleId = roleId;
 	}
-    
-    
-    
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	
     
 }

@@ -215,7 +215,7 @@ public interface IRolesConntroller {
 	@Operation(
 			summary = "Consulta todos os papéis",
 			description = "Consulta todos os papéis cadastradas no sistema.", 
-			operationId = "listaUsuario",
+			operationId = "listaPapeis",
 			tags = "papeis",
 			method = "GET",
 			responses = 
