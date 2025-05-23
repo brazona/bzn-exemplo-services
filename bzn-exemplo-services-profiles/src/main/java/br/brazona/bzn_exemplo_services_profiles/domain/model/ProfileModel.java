@@ -34,16 +34,21 @@ public class ProfileModel {
 		  name = "userId",
 		  dataType = "integer",
 		  example = "1")
-private Long userId;
+private Integer userId;
   
   @ApiModelProperty(
 		  value = "Identificador do Papel",
 		  name = "roleId",
 		  dataType = "integer",
 		  example = "1")
-private Long roleId;
+private Integer roleId;
 
-public ProfileModel(Long id, String name, Long userId, Long roleId) {
+  
+public ProfileModel() {
+	super();
+}
+
+public ProfileModel(Long id, String name, Integer userId, Integer roleId) {
 	super();
 	this.id = id;
 	this.name = name;
@@ -67,23 +72,23 @@ public void setName(String name) {
 	this.name = name;
 }
 
-public Long getUserId() {
+public Integer getUserId() {
 	return userId;
 }
 
-public void setUserId(Long userId) {
+public void setUserId(Integer userId) {
 	this.userId = userId;
 }
 
-public Long getRoleId() {
+public Integer getRoleId() {
 	return roleId;
 }
 
-public void setRoleId(Long roleId) {
+public void setRoleId(Integer roleId) {
 	this.roleId = roleId;
 }
 
-  
-  
 
+  
+  
 }

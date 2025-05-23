@@ -5,33 +5,32 @@ import jakarta.validation.constraints.NotBlank;
 
 import org.springframework.stereotype.Component;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 @Entity
 @Table(name = "profiles")
-@Component
 public class ProfilesEntity implements Serializable {
     /**
 	 * 
 	 */
+	@Serial
 	private static final long serialVersionUID = 1L;
+	
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
-    @Column(unique = true)
-    @NotBlank
     private String name;
     
-    @NotBlank
-    @Column(name = "user_id", nullable = true, length = 12)
-    private Long userId;
+    private Integer userId;
    
-    @NotBlank
-    @Column(name = "role_id", nullable = true, length = 12)
-    private Long roleId;
+    private Integer roleId;
 
-	public ProfilesEntity(Long id, @NotBlank String name, @NotBlank Long userId, @NotBlank Long roleId) {
+	public ProfilesEntity() {
+		super();
+	}
+
+	public ProfilesEntity(Long id, String name, Integer userId, Integer roleId) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -55,26 +54,25 @@ public class ProfilesEntity implements Serializable {
 		this.name = name;
 	}
 
-	public Long getUserId() {
+	public Integer getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Long userId) {
+	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
 
-	public Long getRoleId() {
+	public Integer getRoleId() {
 		return roleId;
 	}
 
-	public void setRoleId(Long roleId) {
+	public void setRoleId(Integer roleId) {
 		this.roleId = roleId;
 	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-
-	
-    
+ 
+       
 }
