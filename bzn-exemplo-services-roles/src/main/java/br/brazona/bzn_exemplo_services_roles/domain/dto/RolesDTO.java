@@ -9,6 +9,12 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.List;
 
+/**Classe responsável por transforma dados dos Papeis.
+* @author Brazona Tech
+* @version 1.0.0
+* @since release 1.0.0
+*/
+
 @Component
 public class RolesDTO {
     @Autowired
@@ -16,22 +22,19 @@ public class RolesDTO {
     @Autowired
     private RolesEntity entity;
 
+    /**Método que transforma dados da classe Entidade para Modelo.
+     * @param rolesEntity - Objeto que contém as informações da entidade papel.
+     * @return RolesModel - Retorna objeto modelo com as informações do papel.
+     */
     public RolesModel toModel(RolesEntity rolesEntity){
-        model.setId(rolesEntity.getId());
-        model.setName(rolesEntity.getName());
-        return model;
+        return new RolesModel(rolesEntity.getId(), rolesEntity.getName());
     }
 
+    /**Método que transforma dados da classe Modelo para Entidade.
+     * @param rolesModel - Objeto que contém as informações da entidade papel.
+     * @return RolesEntity - Retorna objeto entidade com as informações do papel.
+     */
     public RolesEntity toEntity(RolesModel rolesModel){
-        entity.setId(rolesModel.getId());
-        entity.setName(rolesModel.getName());
-        return entity;
-    }
-    public List<RolesModel> toListModel(List<RolesEntity> rolesEntityList) {
-        List<RolesModel> list = new ArrayList<>();
-        rolesEntityList.forEach(rolesEntity -> {
-            list.add(toModel(rolesEntity));
-        });
-        return list;
+        return new RolesEntity(rolesModel.getId(), rolesModel.getName());
     }
 }

@@ -1,16 +1,31 @@
 package br.brazona.bzn_exemplo_services_roles.domain.models;
 
-import jakarta.persistence.Column;
 import org.springframework.stereotype.Component;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.io.Serializable;
 
 
 @Component
+@Schema(description = "Modelo objeto Papel")
 public class RolesModel implements Serializable {
 
-    private Long id;
-    @Column(unique = true)
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	@Schema( description = "Identificador do Papel",
+			  name = "id",
+			  contentMediaType = "integer",
+			  example = "23")
+	private Long id;
+	@Schema(
+			  description = "Nome Papel",
+			  name = "name",
+			  contentMediaType = "String",
+			  example = "ROLE_GUEST")
     private String name;
 
     public RolesModel() {

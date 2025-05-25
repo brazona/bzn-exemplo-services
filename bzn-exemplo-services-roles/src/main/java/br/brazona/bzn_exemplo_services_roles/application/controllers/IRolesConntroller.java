@@ -29,7 +29,7 @@ externalDocs = @ExternalDocumentation(
 		url = "https://github.com/brazona/bzn-exemplo-services/tree/main/bzn-exemplo-services-roles"))
 public interface IRolesConntroller {
 
-/**Método para criar um papéis no sistema.
+	/**Método para criar um papéis no sistema.
 	 * @param rolesModel - Objeto que contém as informações do papéis a ser criado no sistema.
 	 * @return ResponseEntity<RolesModel> - Retorna o papéis criado no sistema.
 	 * @throws Exception - Lança exceção caso ocorra erro ao criar o papéis.
