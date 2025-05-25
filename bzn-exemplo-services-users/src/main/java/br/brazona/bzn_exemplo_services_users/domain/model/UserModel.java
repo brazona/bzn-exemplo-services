@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import io.swagger.v3.oas.annotations.media.Schema;
 
 /**Classe modelo Usuário.
 * @author Brazona Tech
@@ -13,19 +14,18 @@ import io.swagger.annotations.ApiModelProperty;
 */
 
 @Component
-@ApiModel(description = "Modelo objeto Usuário")
+@Schema(description = "Modelo objeto Usuário")
 public class UserModel {
 
-	@ApiModelProperty(
-			  value = "Identificador do Usuário",
+	@Schema( description = "Identificador do Usuário",
 			  name = "id",
-			  dataType = "integer",
+			  contentMediaType = "integer",
 			  example = "23")
     private Long id;
-	@ApiModelProperty(
-			  value = "Email do Usuário",
+	@Schema(
+			  description = "Email do Usuário",
 			  name = "email",
-			  dataType = "String",
+			  contentMediaType = "String",
 			  example = "exemplo@exemplo.com.br")
     private String email;
 
