@@ -18,7 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.brazona.bzn_exemplo_services_users.application.controllers.IUsersController;
 import br.brazona.bzn_exemplo_services_users.domain.model.UserModel;
-import br.brazona.bzn_exemplo_services_users.domain.services.UsersService;
+import br.brazona.bzn_exemplo_services_users.domain.services.impl.UsersServiceImpl;
+
 import org.springframework.web.bind.annotation.RequestBody;
 
 /** Classe que implementa IUsersController. */
@@ -31,7 +32,7 @@ public class UsersControllerImpl implements IUsersController{
 	Logger logger = LoggerFactory.getLogger(UsersControllerImpl.class);
 	
 	@Autowired
-	private UsersService usersService;
+	private UsersServiceImpl usersService;
 	
 	/** { @inheritDoc } */
 	@Override
@@ -71,7 +72,7 @@ public class UsersControllerImpl implements IUsersController{
 	@GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<UserModel>> readAll() {
 		// TODO Auto-generated method stub
-		return ResponseEntity.ok(usersService.readAll());
+		return ResponseEntity.ok(usersService.readALL());
 	}
 
 }

@@ -46,10 +46,13 @@ public class RolesServiceImpl implements RolesServices {
     @Override
     public List<RolesModel> getALL() {
 
-        List<RolesEntity> list = new ArrayList<>();
+        List<RolesModel> lista = new ArrayList<>();
         Iterable<RolesEntity> rolesEntityIterable = rolesRepository.findAll();
-        rolesEntityIterable.forEach(list::add);
-        return rolesDTO.toListModel(list);
+        rolesEntityIterable.forEach(entity ->{
+        	lista.add(rolesDTO.toModel(entity));
+        });
+        
+        return lista;
     }
 
     @Override

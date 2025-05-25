@@ -1,5 +1,6 @@
 package br.brazona.bzn_exemplo_services_roles.domain.dto;
 
+
 import br.brazona.bzn_exemplo_services_roles.domain.models.RolesModel;
 import br.brazona.bzn_exemplo_services_roles.infra.entities.RolesEntity;
 import org.springframework.beans.factory.annotation.Autowired;
