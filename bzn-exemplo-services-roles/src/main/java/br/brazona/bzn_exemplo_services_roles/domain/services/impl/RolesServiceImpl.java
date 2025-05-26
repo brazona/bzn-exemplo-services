@@ -1,12 +1,14 @@
 package br.brazona.bzn_exemplo_services_roles.domain.services.impl;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import br.brazona.bzn_exemplo_services_roles.domain.dto.RolesDTO;
 import br.brazona.bzn_exemplo_services_roles.domain.models.RolesModel;
 import br.brazona.bzn_exemplo_services_roles.domain.services.IRolesServices;
 import br.brazona.bzn_exemplo_services_roles.infra.entities.RolesEntity;
 import br.brazona.bzn_exemplo_services_roles.infra.repositories.RolesRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +53,8 @@ public class RolesServiceImpl implements IRolesServices {
     @Override
     public void delete(Long id) {
 
+    	readById(id);
+    	rolesRepository.deleteById(id);
     }
     
     /** { @inheritDoc } */

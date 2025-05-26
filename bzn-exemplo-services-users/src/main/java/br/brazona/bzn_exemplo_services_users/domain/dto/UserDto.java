@@ -2,7 +2,7 @@ package br.brazona.bzn_exemplo_services_users.domain.dto;
 
 import org.springframework.stereotype.Component;
 
-import br.brazona.bzn_exemplo_services_users.domain.userModel.UserModel;
+import br.brazona.bzn_exemplo_services_users.domain.model.UserModel;
 import br.brazona.bzn_exemplo_services_users.infra.entities.UserEntity;
 
 /**Classe responsável por transforma dados dos Usuários.

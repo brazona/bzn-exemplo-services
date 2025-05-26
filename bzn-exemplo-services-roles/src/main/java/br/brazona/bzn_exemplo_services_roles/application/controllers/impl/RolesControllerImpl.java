@@ -27,7 +27,7 @@ public class RolesControllerImpl implements IRolesConntroller{
 	@Override
 	@PostMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE
     , consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<RolesModel> create(RolesModel rolesModel) {
+	public ResponseEntity<RolesModel> create(@RequestBody RolesModel rolesModel) {
 		// TODO Auto-generated method stub
 		logger.trace("A TRACE body {}: ", rolesModel);
 		logger.info("A INFO body {}: ", rolesModel);
@@ -37,15 +37,15 @@ public class RolesControllerImpl implements IRolesConntroller{
 	/** { @inheritDoc } */
 	@Override
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<RolesModel> readById(Long id) {
+	public ResponseEntity<RolesModel> readById(@PathVariable Long id) {
 		// TODO Auto-generated method stub
-		return ResponseEntity.ok(rolesServiceImpl.getById(id));
+		return ResponseEntity.ok(rolesServiceImpl.readById(id));
 	}
 
 	/** { @inheritDoc } */
 	@Override
 	@PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<RolesModel> update(Long id, RolesModel rolesModel) {
+	public ResponseEntity<RolesModel> update(@PathVariable Long id, @RequestBody RolesModel rolesModel) {
 		// TODO Auto-generated method stub
 		return ResponseEntity.ok(rolesServiceImpl.update(id, rolesModel));
 	}
@@ -53,7 +53,7 @@ public class RolesControllerImpl implements IRolesConntroller{
 	/** { @inheritDoc } */
 	@Override
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(Long id) {
+	public ResponseEntity<Void> delete(@PathVariable Long id) {
 		// TODO Auto-generated method stub
 		rolesServiceImpl.delete(id);
 		return null;
@@ -64,7 +64,7 @@ public class RolesControllerImpl implements IRolesConntroller{
 	@GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<List<RolesModel>> readAll() {
 		// TODO Auto-generated method stub
-		return ResponseEntity.ok(rolesServiceImpl.getALL());
+		return ResponseEntity.ok(rolesServiceImpl.readALL());
 	}
 
     }
