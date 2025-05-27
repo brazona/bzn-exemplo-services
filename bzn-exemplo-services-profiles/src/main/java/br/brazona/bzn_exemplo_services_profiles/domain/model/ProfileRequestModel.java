@@ -13,7 +13,7 @@ import io.swagger.annotations.ApiModelProperty;
 
 @Component
 @ApiModel(description = "Modelo objeto Perfil")
-public class ProfileModel {
+public class ProfileRequestModel {
 	
   @ApiModelProperty(
 		  value = "Identificador do Perfil",
@@ -34,21 +34,21 @@ public class ProfileModel {
 		  name = "userId",
 		  dataType = "integer",
 		  example = "1")
-private Integer userId;
+private Long userId;
   
   @ApiModelProperty(
 		  value = "Identificador do Papel",
 		  name = "roleId",
 		  dataType = "integer",
 		  example = "1")
-private Integer roleId;
+private Long roleId;
 
   
-public ProfileModel() {
+public ProfileRequestModel() {
 	super();
 }
 
-public ProfileModel(Long id, String name, Integer userId, Integer roleId) {
+public ProfileRequestModel(Long id, String name, Long userId, Long roleId) {
 	super();
 	this.id = id;
 	this.name = name;
@@ -72,19 +72,19 @@ public void setName(String name) {
 	this.name = name;
 }
 
-public Integer getUserId() {
+public Long getUserId() {
 	return userId;
 }
 
-public void setUserId(Integer userId) {
+public void setUserId(Long userId) {
 	this.userId = userId;
 }
 
-public Integer getRoleId() {
+public Long getRoleId() {
 	return roleId;
 }
 
-public void setRoleId(Integer roleId) {
+public void setRoleId(Long roleId) {
 	this.roleId = roleId;
 }
 

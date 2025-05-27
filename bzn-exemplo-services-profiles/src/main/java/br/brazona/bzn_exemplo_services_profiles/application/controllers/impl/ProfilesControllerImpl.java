@@ -8,8 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import br.brazona.bzn_exemplo_services_profiles.application.controllers.IProfilesController;
-import br.brazona.bzn_exemplo_services_profiles.domain.model.ProfileModel;
-import br.brazona.bzn_exemplo_services_profiles.domain.services.ProfilesService;
+import br.brazona.bzn_exemplo_services_profiles.domain.model.ProfileRequestModel;
+import br.brazona.bzn_exemplo_services_profiles.domain.model.ProfileResponseModel;
+import br.brazona.bzn_exemplo_services_profiles.domain.services.impl.ProfilesServiceImpl;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,13 +24,13 @@ public class ProfilesControllerImpl implements IProfilesController{
 	Logger logger = LoggerFactory.getLogger(ProfilesControllerImpl.class);
 	
 	@Autowired
-	private ProfilesService profilesServiceImpl;
+	private ProfilesServiceImpl profilesServiceImpl;
 	
 	/** { @inheritDoc } */
 	@Override
 	@PostMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE
     , consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ProfileModel> create(ProfileModel profilesModel) {
+	public ResponseEntity<ProfileResponseModel> create(@RequestBody ProfileRequestModel profilesModel) {
 		// TODO Auto-generated method stub
 		logger.trace("A TRACE body {}: ", profilesModel);
 		logger.info("A INFO body {}: ", profilesModel);
@@ -39,7 +40,7 @@ public class ProfilesControllerImpl implements IProfilesController{
 	/** { @inheritDoc } */
 	@Override
 	@GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ProfileModel> readById(Long id) {
+	public ResponseEntity<ProfileResponseModel> readById(@PathVariable Long id) {
 		// TODO Auto-generated method stub
 		return ResponseEntity.ok(profilesServiceImpl.readById(id));
 	}
@@ -47,7 +48,7 @@ public class ProfilesControllerImpl implements IProfilesController{
 	/** { @inheritDoc } */
 	@Override
 	@PutMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<ProfileModel> update(Long id, ProfileModel profilesModel) {
+	public ResponseEntity<ProfileResponseModel> update(@PathVariable Long id, @RequestBody ProfileRequestModel profilesModel) {
 		// TODO Auto-generated method stub
 		return ResponseEntity.ok(profilesServiceImpl.update(id, profilesModel));
 	}
@@ -55,7 +56,7 @@ public class ProfilesControllerImpl implements IProfilesController{
 	/** { @inheritDoc } */
 	@Override
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(Long id) {
+	public ResponseEntity<Void> delete(@PathVariable Long id) {
 		// TODO Auto-generated method stub
 		profilesServiceImpl.delete(id);
 		return null;
@@ -64,9 +65,9 @@ public class ProfilesControllerImpl implements IProfilesController{
 	/** { @inheritDoc } */
 	@Override
 	@GetMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<List<ProfileModel>> readAll() {
+	public ResponseEntity<List<ProfileResponseModel>> readAll() {
 		// TODO Auto-generated method stub
-		return ResponseEntity.ok(profilesServiceImpl.readAll());
+		return ResponseEntity.ok(profilesServiceImpl.readALL());
 	}
 
     }

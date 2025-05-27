@@ -22,15 +22,15 @@ public class ProfilesEntity implements Serializable {
 	
     private String name;
     
-    private Integer userId;
+    private Long userId;
    
-    private Integer roleId;
+    private Long roleId;
 
 	public ProfilesEntity() {
 		super();
 	}
 
-	public ProfilesEntity(Long id, String name, Integer userId, Integer roleId) {
+	public ProfilesEntity(Long id, String name, Long userId, Long roleId) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -54,19 +54,19 @@ public class ProfilesEntity implements Serializable {
 		this.name = name;
 	}
 
-	public Integer getUserId() {
+	public Long getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Integer userId) {
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
 
-	public Integer getRoleId() {
+	public Long getRoleId() {
 		return roleId;
 	}
 
-	public void setRoleId(Integer roleId) {
+	public void setRoleId(Long roleId) {
 		this.roleId = roleId;
 	}
 

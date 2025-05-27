@@ -4,7 +4,8 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 
-import br.brazona.bzn_exemplo_services_profiles.domain.model.ProfileModel;
+import br.brazona.bzn_exemplo_services_profiles.domain.model.ProfileRequestModel;
+import br.brazona.bzn_exemplo_services_profiles.domain.model.ProfileResponseModel;
 import io.swagger.v3.oas.annotations.ExternalDocumentation;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -47,7 +48,7 @@ public interface IProfilesController {
 					description = "Informações do Perfil", 
 					content = @Content(
 							mediaType = "application/json", 
-							schema = @Schema(implementation = ProfileModel.class))
+							schema = @Schema(implementation = ProfileRequestModel.class))
 			),
 		method = "POST",
 		responses = 
@@ -56,7 +57,7 @@ public interface IProfilesController {
 					responseCode = "200", 
 					content = @Content(
 							mediaType = "application/json", 
-							schema = @Schema(implementation = ProfileModel.class)),
+							schema = @Schema(implementation = ProfileRequestModel.class)),
 					description = "Perfil criado com sucesso!"
 					),
 				@ApiResponse(
@@ -69,7 +70,7 @@ public interface IProfilesController {
 				)
 			}	 
 	)
-	public ResponseEntity<ProfileModel>create(ProfileModel perfisModel);
+	public ResponseEntity<ProfileResponseModel>create(ProfileRequestModel perfisModel);
 
 	/**Método para consultar um perfis no sistema.
 	 * @param id - Identificador do perfis a ser consultado.
@@ -97,7 +98,7 @@ public interface IProfilesController {
 						responseCode = "200", 
 						content = @Content(
 								mediaType = "application/json", 
-								schema = @Schema(implementation = ProfileModel.class)),
+								schema = @Schema(implementation = ProfileRequestModel.class)),
 						description = "Perfil localizado com sucesso!"
 						),
 					@ApiResponse(
@@ -110,7 +111,7 @@ public interface IProfilesController {
 					)
 				}	 
 	)
-	public ResponseEntity<ProfileModel>readById(Long id);
+	public ResponseEntity<ProfileResponseModel>readById(Long id);
 	
 	/**Método para atualizar um perfis no sistema.
 	 * @param id - Identificador do perfis a ser atualizado.
@@ -131,7 +132,7 @@ public interface IProfilesController {
 						description = "Informações do Perfil", 
 						content = @Content(
 								mediaType = "application/json", 
-								schema = @Schema(implementation = ProfileModel.class))
+								schema = @Schema(implementation = ProfileRequestModel.class))
 				),
 			parameters = @Parameter(
 						name = "id",
@@ -148,7 +149,7 @@ public interface IProfilesController {
 						responseCode = "200", 
 						content = @Content(
 								mediaType = "application/json", 
-								schema = @Schema(implementation = ProfileModel.class)),
+								schema = @Schema(implementation = ProfileRequestModel.class)),
 						description = "Perfil atualiza com sucesso!"
 						),
 					@ApiResponse(
@@ -166,7 +167,7 @@ public interface IProfilesController {
 				}	 
 	)
 	
-	public ResponseEntity<ProfileModel>update(Long id, ProfileModel perfisModel);
+	public ResponseEntity<ProfileResponseModel>update(Long id, ProfileRequestModel perfisModel);
 	
 	/**Método para deletar um perfis no sistema.
 	 * @param id - Identificador do perfis a ser deletado.
@@ -224,7 +225,7 @@ public interface IProfilesController {
 							responseCode = "200", 
 							content = @Content(
 									mediaType = "application/json", 
-									array = @ArraySchema(schema = @Schema(implementation = ProfileModel.class))),
+									array = @ArraySchema(schema = @Schema(implementation = ProfileRequestModel.class))),
 							description = "Perfis consultados com sucesso!"
 							),
 					@ApiResponse(
@@ -234,7 +235,7 @@ public interface IProfilesController {
 				}	 
 	)
 	
-	public ResponseEntity<List<ProfileModel>>readAll();
+	public ResponseEntity<List<ProfileResponseModel>>readAll();
 	
 	
 }
