@@ -31,8 +31,7 @@ public class UsersServiceImpl implements IUsersService{
     @Override
     public UserModel create(UserModel usersModel) {
     	return userDto.toModel(
-    			usersRepository.save(userDto.toEntity(usersModel))
-    			);
+    				usersRepository.save(userDto.toEntity(usersModel)));
     }
     
     /** { @inheritDoc } */
@@ -49,10 +48,10 @@ public class UsersServiceImpl implements IUsersService{
     @Override
     public UserModel update(Long id, UserModel usersModel) {
     	readById(id);
-    	usersModel.setId(id);
-    	return userDto.toModel(
-    			usersRepository.save(userDto.toEntity(usersModel))
-    			);
+    	
+    	UserEntity entity = userDto.toEntity(usersModel);
+    	entity.setId(id);
+    	return userDto.toModel(usersRepository.save(entity));
     }
 
     /** { @inheritDoc } */

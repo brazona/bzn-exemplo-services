@@ -1,7 +1,6 @@
 package br.brazona.bzn_exemplo_services_users.infra.entities;
 
 import jakarta.persistence.*;
-import org.springframework.stereotype.Component;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -23,6 +22,7 @@ public class UserEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
     @Column(unique = true)
@@ -35,7 +35,9 @@ public class UserEntity implements Serializable {
 		this.id = id;
 		this.email = email;
 	}
-
+    public UserEntity(String email) {
+		this.email = email;
+	}
 	public Long getId() {
         return id;
     }

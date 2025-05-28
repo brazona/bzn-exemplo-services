@@ -27,6 +27,6 @@ public class UserDto {
 	 * @return UserEntity - Retorna objeto entidade com as informações do usuário.
 	 */	
 	public UserEntity toEntity(UserModel userModel) {
-		return new UserEntity(userModel.getId(), userModel.getEmail());
+		return new UserEntity(userModel.getEmail());
 	}
 }
