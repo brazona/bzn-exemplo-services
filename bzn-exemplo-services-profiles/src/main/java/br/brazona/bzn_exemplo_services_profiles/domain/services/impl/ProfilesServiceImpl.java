@@ -18,6 +18,7 @@ import br.brazona.bzn_exemplo_services_profiles.domain.services.feign.UserFeignC
 import br.brazona.bzn_exemplo_services_profiles.infra.entities.ProfilesEntity;
 import br.brazona.bzn_exemplo_services_profiles.infra.repositories.ProfileRepository;
 
+
 @Service
 public class ProfilesServiceImpl implements IProfilesService{
 
@@ -75,10 +76,20 @@ public class ProfilesServiceImpl implements IProfilesService{
      * @throws Exception - Lança exceção caso ocorra erro ao atualizar o perfil.
      */
     public ProfileResponseModel update(Long id, ProfileRequestModel profileModel) {
+    	
     	readById(id);
-    	profileModel.setId(id);
-    	ProfilesEntity entity = profileRepository.save(profileDto.toEntity(profileModel));
-    	return readById(entity.getId());
+    	
+    	ProfilesEntity entity = profileDto.toEntity(profileModel);
+    	entity.setId(id);
+    	profileRepository.save(entity);
+    	UserModel user = userFeignClient.readById(profileModel.getUserId()).getBody();
+    	RoleModel role = roleFeignClient.readById(profileModel.getRoleId()).getBody();
+    	
+    	return profileDto.toResponseModel(
+				entity,
+				user,
+				role
+			);
     }
     /**Método que deleta um perfil no sistema.
      * @param id - Identificador do perfil a ser deletado no sistema.
