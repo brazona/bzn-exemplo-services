@@ -18,6 +18,7 @@ public class ProfilesEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 	
     private String name;
@@ -30,9 +31,8 @@ public class ProfilesEntity implements Serializable {
 		super();
 	}
 
-	public ProfilesEntity(Long id, String name, Long userId, Long roleId) {
+	public ProfilesEntity(String name, Long userId, Long roleId) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.userId = userId;
 		this.roleId = roleId;

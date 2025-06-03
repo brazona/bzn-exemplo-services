@@ -35,6 +35,6 @@ public class RolesDTO {
      * @return RolesEntity - Retorna objeto entidade com as informações do papel.
      */
     public RolesEntity toEntity(RolesModel rolesModel){
-        return new RolesEntity(rolesModel.getId(), rolesModel.getName());
+        return new RolesEntity(rolesModel.getName());
     }
 }

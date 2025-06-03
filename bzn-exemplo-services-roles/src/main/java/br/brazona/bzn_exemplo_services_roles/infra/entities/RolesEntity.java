@@ -16,6 +16,7 @@ public class RolesEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
     @Column(unique = true)
@@ -24,6 +25,10 @@ public class RolesEntity implements Serializable {
     public RolesEntity() {
     }
 
+    public RolesEntity(String name) {
+        this.name = name;
+    }
+    
     public RolesEntity(Long id, String name) {
         this.id = id;
         this.name = name;

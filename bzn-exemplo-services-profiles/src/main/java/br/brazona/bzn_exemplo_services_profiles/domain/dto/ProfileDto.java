@@ -33,7 +33,6 @@ public class ProfileDto {
 	
 	public ProfilesEntity toEntity(ProfileRequestModel model) {
 		return new ProfilesEntity(
-				model.getId(),
 				model.getName(),
 				model.getUserId(),
 				model.getRoleId());

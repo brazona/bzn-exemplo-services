@@ -10,6 +10,7 @@ import br.brazona.bzn_exemplo_services_roles.domain.services.IRolesServices;
 import br.brazona.bzn_exemplo_services_roles.infra.entities.RolesEntity;
 import br.brazona.bzn_exemplo_services_roles.infra.repositories.RolesRepository;
 
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -42,11 +43,11 @@ public class RolesServiceImpl implements IRolesServices {
     /** { @inheritDoc } */
     @Override
     public RolesModel update(Long id, RolesModel rolesModel) {
-        RolesModel rolesModelUpdate = readById(id);
-        rolesModelUpdate.setId(id);
-        rolesModelUpdate.setName(rolesModel.getName());
-        RolesEntity rolesEntitySaved = rolesRepository.save(rolesDTO.toEntity(rolesModelUpdate));
-        return rolesDTO.toModel(rolesEntitySaved);
+        readById(id);
+        
+        RolesEntity entity = rolesDTO.toEntity(rolesModel);
+    	entity.setId(id);
+    	return rolesDTO.toModel(rolesRepository.save(entity));
     }
 
     /** { @inheritDoc } */
